@@ -40,3 +40,12 @@ Puedes encontrar más detalles sobre el proyecto en la carpeta `/docs`:
 - [Idea del Proyecto](./docs/idea.md)
 - [Diseño y Arquitectura](./docs/design.md)
 - [API Endpoints](./docs/api.md)
+- [Gestión del Proyecto (Trello)](./docs/project-management.md)
+- [Componentes](./docs/components.md)
+- [Hooks](./docs/hooks.md)
+- [Context API](./docs/context.md)
+
+## Tablero de Trello
+
+Puedes seguir el progreso del desarrollo en nuestro tablero oficial:
+[Enlace al tablero Trello](https://trello.com/b/placeholder-ecomarket) <!-- Sustituir por el enlace real -->
