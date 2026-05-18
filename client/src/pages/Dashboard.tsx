@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import StatCard from '../components/StatCard';
 import { Package, AlertCircle, DollarSign, TrendingUp } from 'lucide-react';
 import apiClient from '../services/apiClient';
-import { Product } from '../types';
+import type { Product } from '../types';
 
 const Dashboard: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);

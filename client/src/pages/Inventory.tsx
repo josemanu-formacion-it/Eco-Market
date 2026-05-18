@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import InventoryTable from '../components/InventoryTable';
 import ProductForm from '../components/ProductForm';
 import apiClient from '../services/apiClient';
-import { Product } from '../types';
+import type { Product } from '../types';
 import { Plus, Search, X } from 'lucide-react';
 
 const Inventory: React.FC = () => {
