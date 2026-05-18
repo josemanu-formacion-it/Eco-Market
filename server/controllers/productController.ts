@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import productService from '../services/productService';
+import { type Request, type Response } from 'express';
+import productService from '../services/productService.js';
 
 class ProductController {
   async getAll(req: Request, res: Response) {
@@ -13,7 +13,7 @@ class ProductController {
 
   async getById(req: Request, res: Response) {
     try {
-      const product = await productService.getById(req.params.id);
+      const product = await productService.getById(req.params.id as string);
       if (!product) {
         return res.status(404).json({ message: 'Producto no encontrado' });
       }
@@ -34,7 +34,7 @@ class ProductController {
 
   async update(req: Request, res: Response) {
     try {
-      const product = await productService.update(req.params.id, req.body);
+      const product = await productService.update(req.params.id as string, req.body);
       if (!product) {
         return res.status(404).json({ message: 'Producto no encontrado' });
       }
@@ -46,7 +46,7 @@ class ProductController {
 
   async delete(req: Request, res: Response) {
     try {
-      const success = await productService.delete(req.params.id);
+      const success = await productService.delete(req.params.id as string);
       if (!success) {
         return res.status(404).json({ message: 'Producto no encontrado' });
       }

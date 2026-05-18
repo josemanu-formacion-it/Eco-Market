@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { type Product } from '../types/index.js';
 
 class ProductService {
   private products: Product[] = [
@@ -43,14 +43,17 @@ class ProductService {
 
   async update(id: string, productData: Partial<Product>): Promise<Product | undefined> {
     const index = this.products.findIndex(p => p.id === id);
-    if (index === -1) return undefined;
+    const existingProduct = this.products[index];
+    if (index === -1 || !existingProduct) return undefined;
 
-    this.products[index] = {
-      ...this.products[index],
+    const updatedProduct: Product = {
+      ...existingProduct,
       ...productData,
       updatedAt: new Date(),
     };
-    return this.products[index];
+    
+    this.products[index] = updatedProduct;
+    return updatedProduct;
   }
 
   async delete(id: string): Promise<boolean> {

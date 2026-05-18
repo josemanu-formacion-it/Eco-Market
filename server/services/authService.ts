@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { User, AuthResponse } from '../types';
+import { type User, type AuthResponse } from '../types/index.js';
 
 class AuthService {
   private users: User[] = [
