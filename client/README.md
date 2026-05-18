@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# EcoMarket - Cliente Frontend 💻
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el frontend de la aplicación EcoMarket, construido con tecnologías modernas para ofrecer una experiencia de usuario rápida y fluida.
 
-Currently, two official plugins are available:
+## 🛠️ Stack Tecnológico
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19**: Biblioteca principal para la interfaz.
+- **Vite**: Herramienta de construcción y servidor de desarrollo ultra rápido.
+- **TypeScript**: Para un desarrollo seguro y libre de errores de tipo.
+- **Tailwind CSS v4**: Estilos modernos con la última versión del motor de CSS.
+- **React Router 7**: Gestión de navegación y rutas protegidas.
+- **Lucide React**: Set de iconos elegantes y ligeros.
+- **Axios**: Cliente HTTP para la comunicación con la API.
 
-## React Compiler
+## 📁 Estructura de Carpetas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `src/components`: Componentes UI reutilizables.
+- `src/context`: Gestión del estado global (Autenticación).
+- `src/layout`: Envolventes de página y estructura visual común.
+- `src/pages`: Páginas principales de la aplicación.
+- `src/services`: Cliente de API configurado.
+- `src/types`: Definiciones de interfaces de TypeScript.
 
-## Expanding the ESLint configuration
+## 🚀 Comandos Disponibles
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Desde la carpeta `/client`:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `npm run dev`: Inicia el servidor de desarrollo de Vite.
+- `npm run build`: Compila la aplicación para producción (TypeScript + Vite).
+- `npm run lint`: Ejecuta el linter para revisar la calidad del código.
+- `npm run preview`: Previsualiza la compilación de producción localmente.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🌐 Configuración de API
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+La URL de la API se configura automáticamente. Para cambiarla en producción, utiliza la variable de entorno `VITE_API_URL`.
+Por defecto: `http://localhost:4000/api/v1`

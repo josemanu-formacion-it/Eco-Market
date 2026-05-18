@@ -1,51 +1,54 @@
-# EcoMarket
+# EcoMarket 🌿
 
-Sistema de gestión de inventario para pequeños negocios locales.
+Sistema fullstack de gestión de inventario diseñado para pequeños negocios locales. Proyecto final de la Fase 5.
 
-## Estructura del Proyecto
+## 🚀 Tecnologías Principales
 
-Este repositorio es un monorepo que contiene tanto el frontend como el backend:
+- **Frontend:** React 19 + TypeScript + Tailwind CSS v4 + Vite
+- **Backend:** Node.js + Express + TypeScript
+- **Comunicación:** Axios con cliente tipado
+- **Seguridad:** Autenticación JWT y rutas protegidas
 
-- **/client**: Aplicación frontend construida con React, TypeScript, Tailwind CSS y Vite.
-- **/server**: API Backend construida con Node.js, Express y TypeScript.
-- **/docs**: Documentación detallada del proyecto (arquitectura, diseño, idea).
+## 📂 Estructura del Proyecto (Monorepo)
 
-## Requisitos Previos
+- **/client**: Aplicación frontend (Vite).
+- **/server**: API Backend (Node.js/Express).
+- **/docs**: Documentación técnica exhaustiva de cada módulo.
 
-- [Node.js](https://nodejs.org/) (versión 18 o superior recomendada)
-- npm (incluido con Node.js)
+## 🛠️ Instalación y Configuración
 
-## Instalación
+### 1. Requisitos Previos
+- Node.js v18+
+- npm v9+
 
-Para instalar todas las dependencias (raíz, cliente y servidor), ejecuta desde la raíz:
+### 2. Instalación de Dependencias
+Desde la raíz del proyecto, ejecuta el comando para instalar todo simultáneamente:
 
 ```bash
 npm run install:all
 ```
 
-## Desarrollo
-
-Para ejecutar tanto el cliente como el servidor simultáneamente en modo desarrollo:
+### 3. Ejecución en Desarrollo
+Para arrancar el cliente y el servidor al mismo tiempo:
 
 ```bash
 npm run dev
 ```
 
-- El frontend estará disponible en: `http://localhost:5173`
-- El backend estará disponible en: `http://localhost:4000`
+- **Frontend:** [http://localhost:5173](http://localhost:5173)
+- **Backend:** [http://localhost:4000](http://localhost:4000)
 
-## Documentación
+## 🔑 Credenciales de Prueba (Demo)
+- **Usuario:** `admin@ecomarket.com`
+- **Contraseña:** `password123`
 
-Puedes encontrar más detalles sobre el proyecto en la carpeta `/docs`:
-- [Idea del Proyecto](./docs/idea.md)
-- [Diseño y Arquitectura](./docs/design.md)
-- [API Endpoints](./docs/api.md)
-- [Gestión del Proyecto (Trello)](./docs/project-management.md)
-- [Componentes](./docs/components.md)
-- [Hooks](./docs/hooks.md)
-- [Context API](./docs/context.md)
+## 📖 Documentación Detallada
+Consulta la carpeta `/docs` para profundizar en el diseño:
+- [Idea y Objetivos](./docs/idea.md)
+- [Arquitectura y Diseño](./docs/design.md)
+- [Gestión Ágil (Trello)](./docs/project-management.md)
+- [Documentación de la API](./docs/api.md)
+- [Guía de Componentes](./docs/components.md)
 
-## Tablero de Trello
-
-Puedes seguir el progreso del desarrollo en nuestro tablero oficial:
-[Enlace al tablero Trello](https://trello.com/b/placeholder-ecomarket) <!-- Sustituir por el enlace real -->
+## 📋 Tablero de Trello
+Puedes ver el progreso del proyecto aquí: [Tablero EcoMarket](https://trello.com/b/placeholder-ecomarket)

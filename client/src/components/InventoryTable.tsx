@@ -29,7 +29,7 @@ const InventoryTable: React.FC<InventoryTableProps> = ({ products, onEdit, onDel
                 {product.description && <div className="text-sm text-gray-500">{product.description}</div>}
               </td>
               <td className="px-6 py-4 text-sm text-gray-600">{product.category}</td>
-              <td className="px-6 py-4 text-sm text-gray-600">${product.price.toFixed(2)}</td>
+              <td className="px-6 py-4 text-sm text-gray-600">{product.price.toFixed(2)}€</td>
               <td className="px-6 py-4">
                 <div className="flex items-center">
                   <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${

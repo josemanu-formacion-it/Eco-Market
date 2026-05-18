@@ -52,7 +52,7 @@ const Dashboard: React.FC = () => {
         />
         <StatCard
           title="Valor Total"
-          value={`$${totalValue.toLocaleString()}`}
+          value={`${totalValue.toLocaleString()}€`}
           icon={DollarSign}
           color="bg-green-500"
         />
