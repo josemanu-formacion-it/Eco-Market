@@ -9,6 +9,14 @@ export interface Product {
   updatedAt: string;
 }
 
+export interface ProductFormData {
+  name: string;
+  category: string;
+  price: number;
+  stock: number;
+  description?: string;
+}
+
 export interface User {
   id: string;
   email: string;

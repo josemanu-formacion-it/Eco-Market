@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import { LogOut, Package, LayoutDashboard } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 

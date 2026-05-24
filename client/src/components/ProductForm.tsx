@@ -1,32 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import type { Product } from '../types';
+import React, { useState } from 'react';
+import type { Product, ProductFormData } from '../types';
 
 interface ProductFormProps {
   product?: Product;
-  onSubmit: (data: any) => void;
+  onSubmit: (data: ProductFormData) => void;
   onCancel: () => void;
 }
 
 const ProductForm: React.FC<ProductFormProps> = ({ product, onSubmit, onCancel }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    category: '',
-    price: 0,
-    stock: 0,
-    description: '',
+  const [formData, setFormData] = useState<ProductFormData>({
+    name: product?.name || '',
+    category: product?.category || '',
+    price: product?.price || 0,
+    stock: product?.stock || 0,
+    description: product?.description || '',
   });
-
-  useEffect(() => {
-    if (product) {
-      setFormData({
-        name: product.name,
-        category: product.category,
-        price: product.price,
-        stock: product.stock,
-        description: product.description || '',
-      });
-    }
-  }, [product]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

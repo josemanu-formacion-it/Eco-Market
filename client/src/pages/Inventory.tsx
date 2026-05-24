@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import InventoryTable from '../components/InventoryTable';
 import ProductForm from '../components/ProductForm';
 import apiClient from '../services/apiClient';
-import type { Product } from '../types';
+import type { Product, ProductFormData } from '../types';
 import { Plus, Search, X } from 'lucide-react';
 
 const Inventory: React.FC = () => {
@@ -12,22 +12,36 @@ const Inventory: React.FC = () => {
   const [editingProduct, setEditingProduct] = useState<Product | undefined>(undefined);
   const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    let ignore = false;
+    const loadProducts = async () => {
+      try {
+        const response = await apiClient.get<Product[]>('/products');
+        if (!ignore) {
+          setProducts(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching products', error);
+      } finally {
+        if (!ignore) {
+          setIsLoading(false);
+        }
+      }
+    };
+    loadProducts();
+    return () => { ignore = true; };
+  }, []);
+
   const fetchProducts = async () => {
     try {
       const response = await apiClient.get<Product[]>('/products');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products', error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const handleCreateOrUpdate = async (data: any) => {
+  const handleCreateOrUpdate = async (data: ProductFormData) => {
     try {
       if (editingProduct) {
         await apiClient.put(`/products/${editingProduct.id}`, data);
@@ -115,6 +129,7 @@ const Inventory: React.FC = () => {
               {editingProduct ? 'Editar Producto' : 'Añadir Nuevo Producto'}
             </h3>
             <ProductForm
+              key={editingProduct?.id || 'new'}
               product={editingProduct}
               onSubmit={handleCreateOrUpdate}
               onCancel={() => setIsModalOpen(false)}

@@ -1,49 +1,45 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import type { User, AuthResponse } from '../types';
 import apiClient from '../services/apiClient';
-
-interface AuthContextType {
-  user: User | null;
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => void;
-  isLoading: boolean;
-  error: string | null;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+import axios from 'axios';
+import { AuthContext } from './AuthContextType';
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
+  const [user, setUser] = useState<User | null>(() => {
     const savedUser = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     if (savedUser && token) {
       try {
-        setUser(JSON.parse(savedUser));
+        return JSON.parse(savedUser);
       } catch (e) {
         console.error('Failed to parse saved user', e);
         localStorage.removeItem('user');
         localStorage.removeItem('token');
       }
     }
-    setIsLoading(false);
-  }, []);
+    return null;
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const login = async (email: string, password: string) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await apiClient.post<AuthResponse>('/auth/login', { email, password });
-      const { token, user } = response.data;
-      
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      setUser(user);
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Error al iniciar sesión');
+      await apiClient.post<AuthResponse>('/auth/login', { email, password }).then(response => {
+        const { token, user } = response.data;
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        setUser(user);
+      });
+    } catch (err: unknown) {
+      let message = 'Error al iniciar sesión';
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        message = err.response.data.message;
+      } else if (err instanceof Error) {
+        message = err.message;
+      }
+      setError(message);
       throw err;
     } finally {
       setIsLoading(false);
@@ -61,12 +57,4 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       {children}
     </AuthContext.Provider>
   );
-};
-
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
-  return context;
 };
