@@ -13,6 +13,18 @@ app.use(express.json());
 
 app.use('/api/v1', routes);
 
+app.get('/', (req: Request, res: Response) => {
+  res.json({
+    name: 'EcoMarket API',
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/v1/auth',
+      products: '/api/v1/products',
+      health: '/health'
+    }
+  });
+});
+
 app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', message: 'EcoMarket API is running' });
 });
