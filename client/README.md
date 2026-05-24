@@ -1,17 +1,23 @@
 # EcoMarket - Cliente Frontend 💻
 
-Interfaz de usuario para la gestión de EcoMarket.
+Interfaz de usuario moderna y reactiva para la gestión de inventario de EcoMarket.
 
 ## 🛠️ Stack Tecnológico
-- **React 19**
-- **Vite 6** (Configurado para alta compatibilidad en despliegue)
-- **Tailwind CSS v4**
-- **TypeScript 5**
+- **React 19**: Aprovechando las últimas mejoras en rendimiento y hooks.
+- **Vite 6**: Bundler ultra-rápido configurado para despliegues estables.
+- **Tailwind CSS v4**: Estilizado moderno y eficiente.
+- **TypeScript 6**: Tipado estricto para mayor robustez en el desarrollo.
 
 ## 🌐 Despliegue
+- **Platform:** Vercel.
 - **URL:** [https://eco-market-client.vercel.app](https://eco-market-client.vercel.app)
-- **Variable de Entorno:** `VITE_API_URL` apunta a la API de Render.
+- **Configuración:** La aplicación consume la API alojada en Render a través de la URL base configurada.
 
-## 🚀 Comandos
-- `npm run dev`: Desarrollo local.
-- `npm run build`: Construcción para producción.
+## 🚀 Comandos Disponibles
+- `npm run dev`: Inicia el servidor de desarrollo local de Vite.
+- `npm run build`: Genera el bundle optimizado para producción en la carpeta `dist`.
+- `npm run lint`: Ejecuta ESLint para asegurar la calidad del código.
+- `npm run type-check`: Ejecuta el compilador de TypeScript para validar tipos sin generar archivos.
+
+## 🔧 Solución de Problemas (Build)
+Si experimentas errores relacionados con "native bindings" (como `@rolldown/binding`), asegúrate de que el `package-lock.json` se haya generado incluyendo las dependencias opcionales para Linux, las cuales están definidas en el `package.json` de la raíz del monorepo.

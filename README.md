@@ -8,30 +8,36 @@ Sistema fullstack de gestión de inventario diseñado para pequeños negocios lo
 
 ## 🚀 Tecnologías Principales
 - **Frontend:** React 19 + TypeScript + Tailwind CSS v4 + Vite 6
-- **Backend:** Node.js + Express + TypeScript
+- **Backend:** Node.js 22 + Express + TypeScript
 - **Comunicación:** Axios con cliente tipado
 - **Seguridad:** Autenticación JWT y rutas protegidas
 
 ## 📂 Estructura del Proyecto (Monorepo)
-- **/client**: Aplicación frontend.
-- **/server**: API Backend.
-- **/docs**: Documentación técnica detallada.
+- **/client**: Aplicación frontend (React + Vite).
+- **/server**: API Backend (Express).
+- **/docs**: Documentación técnica detallada sobre el diseño, API y gestión.
 
 ## 🛠️ Instalación y Configuración Local
 ### 1. Requisitos Previos
-- Node.js v20+ (Recomendado)
+- Node.js v22.x (Recomendado)
 - npm v10+
 
 ### 2. Instalación
-Desde la raíz:
+Desde la raíz del proyecto, instala todas las dependencias (raíz, client y server):
 ```bash
 npm run install:all
 ```
 
 ### 3. Ejecución
+Inicia el entorno de desarrollo (cliente y servidor simultáneamente):
 ```bash
 npm run dev
 ```
+
+## ⚙️ Notas de Configuración (Multiplataforma)
+El proyecto incluye configuraciones específicas para asegurar la compatibilidad entre Windows (desarrollo) y Linux (despliegue en Vercel):
+- **`.npmrc`**: Configurado para soportar múltiples arquitecturas (linux, win32, darwin).
+- **`optionalDependencies`**: Se han incluido los enlaces nativos de `rolldown` en el `package.json` raíz para evitar errores de bindings en entornos CI/CD como Vercel.
 
 ## 🔑 Credenciales de Prueba (Demo)
 - **Usuario:** `admin@ecomarket.com`
@@ -44,3 +50,4 @@ npm run dev
 - [Arquitectura y Diseño](./docs/design.md)
 - [Gestión Ágil (Trello)](./docs/project-management.md)
 - [Guía de Componentes](./docs/components.md)
+- [Documentación de la API](./docs/api.md)
