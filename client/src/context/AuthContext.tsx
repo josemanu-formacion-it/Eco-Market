@@ -26,12 +26,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     setError(null);
     try {
-      await apiClient.post<AuthResponse>('/auth/login', { email, password }).then(response => {
-        const { token, user } = response.data;
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(user));
-        setUser(user);
-      });
+      const response = await apiClient.post<AuthResponse>('/auth/login', { email, password });
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      setUser(user);
     } catch (err: unknown) {
       let message = 'Error al iniciar sesión';
       if (axios.isAxiosError(err) && err.response?.data?.message) {
