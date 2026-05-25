@@ -11,8 +11,9 @@ interface InventoryTableProps {
 const InventoryTable: React.FC<InventoryTableProps> = ({ products, onEdit, onDelete }) => {
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-      <table className="w-full text-left border-collapse">
-        <thead className="bg-gray-50">
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse min-w-[600px]">
+          <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Producto</th>
             <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Categoría</th>
@@ -61,7 +62,8 @@ const InventoryTable: React.FC<InventoryTableProps> = ({ products, onEdit, onDel
         </tbody>
       </table>
     </div>
-  );
+  </div>
+);
 };
 
 export default InventoryTable;
