@@ -19,12 +19,12 @@ async function migrate() {
     const seedSql = fs.readFileSync(seedPath, 'utf8');
 
     console.log('⏳ Creando tablas...');
-    // Ejecutamos el schema. Usamos una sola query ya que neon soporta múltiples statements
-    await sql(schemaSql);
+    // Usamos sql.query() para ejecutar strings de SQL directamente
+    await sql.query(schemaSql);
     console.log('✅ Tablas creadas correctamente.');
 
     console.log('⏳ Insertando datos de prueba...');
-    await sql(seedSql);
+    await sql.query(seedSql);
     console.log('✅ Datos insertados correctamente.');
 
     console.log('🎉 ¡Base de datos configurada con éxito!');
