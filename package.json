@@ -6,8 +6,9 @@
   "directories": {
     "doc": "docs"
   },
+  "type": "module",
   "scripts": {
-    "migrate": "node --loader ts-node/esm migrate.ts",
+    "migrate": "node migrate.js",
     "dev": "next dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "dotenv": "^17.4.2",
     "ts-node": "^10.9.2"
   }

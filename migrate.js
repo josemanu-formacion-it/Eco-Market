@@ -1,10 +1,12 @@
-import { sql } from './lib/db';
+import { neon } from '@neondatabase/serverless';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 
-// Cargar variables de entorno manualmente para este script
+// Cargar variables de entorno
 dotenv.config({ path: '.env.local' });
+
+const sql = neon(process.env.DATABASE_URL);
 
 async function migrate() {
   try {
@@ -17,11 +19,12 @@ async function migrate() {
     const seedSql = fs.readFileSync(seedPath, 'utf8');
 
     console.log('⏳ Creando tablas...');
-    await sql.query(schemaSql);
+    // Ejecutamos el schema. Usamos una sola query ya que neon soporta múltiples statements
+    await sql(schemaSql);
     console.log('✅ Tablas creadas correctamente.');
 
     console.log('⏳ Insertando datos de prueba...');
-    await sql.query(seedSql);
+    await sql(seedSql);
     console.log('✅ Datos insertados correctamente.');
 
     console.log('🎉 ¡Base de datos configurada con éxito!');
