@@ -19,12 +19,18 @@ async function migrate() {
     const seedSql = fs.readFileSync(seedPath, 'utf8');
 
     console.log('⏳ Creando tablas...');
-    // Usamos sql.query() para ejecutar strings de SQL directamente
-    await sql.query(schemaSql);
+    // Dividimos el archivo por el punto y coma y filtramos líneas vacías
+    const schemaCommands = schemaSql.split(';').map(cmd => cmd.trim()).filter(cmd => cmd.length > 0);
+    for (const cmd of schemaCommands) {
+      await sql.query(cmd);
+    }
     console.log('✅ Tablas creadas correctamente.');
 
     console.log('⏳ Insertando datos de prueba...');
-    await sql.query(seedSql);
+    const seedCommands = seedSql.split(';').map(cmd => cmd.trim()).filter(cmd => cmd.length > 0);
+    for (const cmd of seedCommands) {
+      await sql.query(cmd);
+    }
     console.log('✅ Datos insertados correctamente.');
 
     console.log('🎉 ¡Base de datos configurada con éxito!');
