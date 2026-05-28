@@ -1,53 +1,40 @@
-# EcoMarket 🌿
+# Learning Inventory - Fase 6 🚀
 
-Sistema fullstack de gestión de inventario diseñado para pequeños negocios locales. Proyecto final de la Fase 5.
+Este proyecto es una aplicación de gestión de inventario diseñada para dominar las bases de datos relacionales con **PostgreSQL** y **Neon**.
 
-## 🔗 Enlaces del Proyecto
-- **Frontend (Vercel):** [https://eco-market-client.vercel.app](https://eco-market-client.vercel.app)
-- **Backend (Render):** [https://eco-market-e03e.onrender.com](https://eco-market-e03e.onrender.com)
+## 🛠️ Stack Tecnológico
+- **Base de Datos:** PostgreSQL (Serverless via [Neon](https://neon.tech))
+- **Backend:** Next.js (App Router)
+- **Frontend:** React + Tailwind CSS
+- **Despliegue:** Vercel
 
-## 🚀 Tecnologías Principales
-- **Frontend:** React 19 + TypeScript + Tailwind CSS v4 + Vite 6
-- **Backend:** Node.js 22 + Express + TypeScript
-- **Comunicación:** Axios con cliente tipado
-- **Seguridad:** Autenticación JWT y rutas protegidas
+## 📂 Estructura del Proyecto
+- `/sql`: Scripts de base de datos (Esquema y Semillas).
+- `/docs`: Documentación técnica y análisis.
+- `/lib`: Configuración de la conexión a la DB y utilidades.
+- `/app`: Rutas y lógica de la aplicación (Next.js).
 
-## 📂 Estructura del Proyecto (Monorepo)
-- **/client**: Aplicación frontend (React + Vite).
-- **/server**: API Backend (Express).
-- **/docs**: Documentación técnica detallada sobre el diseño, API y gestión.
+## 🚀 Pasos para Empezar
 
-## 🛠️ Instalación y Configuración Local
-### 1. Requisitos Previos
-- Node.js v22.x (Recomendado)
-- npm v10+
+### 1. Configuración de Base de Datos (Neon)
+1. Regístrate en [Neon.tech](https://neon.tech).
+2. Crea un proyecto llamado `learning-inventory`.
+3. En el panel de control, copia tu **Connection String** (ej: `postgresql://user:password@host/dbname?sslmode=require`).
+4. Ve a la sección **SQL Editor** en Neon y pega el contenido de `sql/schema.sql` para crear las tablas.
+5. (Opcional) Ejecuta `sql/seed.sql` para cargar datos iniciales de prueba.
 
-### 2. Instalación
-Desde la raíz del proyecto, instala todas las dependencias (raíz, client y server):
-```bash
-npm run install:all
+### 2. Variables de Entorno
+Crea un archivo `.env.local` en la raíz del proyecto y añade tu cadena de conexión:
+```env
+DATABASE_URL=tu_cadena_de_conexion_aqui
 ```
 
-### 3. Ejecución
-Inicia el entorno de desarrollo (cliente y servidor simultáneamente):
+### 3. Instalación de Dependencias
 ```bash
-npm run dev
+npm install @neondatabase/serverless
 ```
 
-## ⚙️ Notas de Configuración (Multiplataforma)
-El proyecto incluye configuraciones específicas para asegurar la compatibilidad entre Windows (desarrollo) y Linux (despliegue en Vercel):
-- **`.npmrc`**: Configurado para soportar múltiples arquitecturas (linux, win32, darwin).
-- **`optionalDependencies`**: Se han incluido los enlaces nativos de `rolldown` en el `package.json` raíz para evitar errores de bindings en entornos CI/CD como Vercel.
-
-## 🔑 Credenciales de Prueba (Demo)
-- **Usuario:** `admin@ecomarket.com`
-- **Contraseña:** `password123`
-
-> **Nota sobre Render:** La API utiliza el plan gratuito. Si la web tarda en cargar los datos inicialmente, es debido al tiempo de "despertar" del servidor (aprox. 40 segundos).
-
-## 📖 Documentación Detallada
-- [Idea y Objetivos](./docs/idea.md)
-- [Arquitectura y Diseño](./docs/design.md)
-- [Gestión Ágil (Trello)](./docs/project-management.md)
-- [Guía de Componentes](./docs/components.md)
-- [Documentación de la API](./docs/api.md)
+## 📖 Documentación Requerida
+- [Diseño de Arquitectura](./docs/arquitectura-datos.md)
+- [Análisis SQL (Joins)](./docs/analisis-sql.md)
+- [Seguridad y Prevención de Inyección SQL](./docs/seguridad-db.md) (Pendiente)

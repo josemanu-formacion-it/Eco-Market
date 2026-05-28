@@ -1,30 +1,15 @@
 {
-  "name": "eco-market-root",
-  "private": true,
-  "engines": {
-    "node": "22.x"
+  "name": "learning-inventory",
+  "version": "1.0.0",
+  "description": "Este proyecto es una aplicación de gestión de inventario diseñada para dominar las bases de datos relacionales con **PostgreSQL** y **Neon**.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev --workspace=client\" \"npm run dev --workspace=server\"",
-    "install:all": "npm install && npm install --workspace=client && npm install --workspace=server",
-    "build": "npm run build --workspace=client",
-    "build:client": "npm run build --workspace=client",
-    "start:server": "npm run start --workspace=server"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "workspaces": [
-    "client",
-    "server"
-  ],
-  "optionalDependencies": {
-    "rolldown": "*",
-    "@rolldown/binding-linux-x64-gnu": "*",
-    "@rolldown/binding-linux-x64-musl": "*",
-    "@rolldown/binding-linux-arm64-gnu": "*",
-    "@rolldown/binding-linux-arm64-musl": "*",
-    "@rolldown/binding-darwin-arm64": "*",
-    "@rolldown/binding-darwin-x64": "*"
-  },
-  "devDependencies": {
-    "concurrently": "^9.2.1"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
