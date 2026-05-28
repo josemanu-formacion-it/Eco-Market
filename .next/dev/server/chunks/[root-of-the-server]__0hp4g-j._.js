@@ -71,7 +71,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$
 async function GET() {
     try {
         // Consulta con JOIN para obtener productos y sus categorías
-        const products = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["sql"].query(`
+        const result = await __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$db$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["sql"].query(`
       SELECT 
         p.id, 
         p.name, 
@@ -82,7 +82,8 @@ async function GET() {
       INNER JOIN categories c ON p.category_id = c.id
       ORDER BY p.created_at DESC
     `);
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(products.rows);
+        // El driver de Neon devuelve un objeto con una propiedad 'rows'
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(result.rows || []);
     } catch (error) {
         console.error('Database error:', error);
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({

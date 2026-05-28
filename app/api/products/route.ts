@@ -4,7 +4,7 @@ import { sql } from '@/lib/db';
 export async function GET() {
   try {
     // Consulta con JOIN para obtener productos y sus categorías
-    const products = await sql.query(`
+    const result = await sql.query(`
       SELECT 
         p.id, 
         p.name, 
@@ -16,7 +16,8 @@ export async function GET() {
       ORDER BY p.created_at DESC
     `);
 
-    return NextResponse.json(products.rows);
+    // El driver de Neon devuelve un objeto con una propiedad 'rows'
+    return NextResponse.json(result.rows || []);
   } catch (error) {
     console.error('Database error:', error);
     return NextResponse.json(
